@@ -76,4 +76,12 @@ jobs:
 
         env:
           FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.16.9-x64
-          PUB_CACHE: /home/runner/.pub-cache
+          PUB_CACHE: /home/runner/.pub-cache      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release
+          path: build/app/outputs/flutter-apk/app-release.apk
+          
